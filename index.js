@@ -3,6 +3,7 @@ const app = express()
 const morgan = require('morgan')
 const mongoose = require('mongoose')
 const cors = require('cors')
+const seed = require('./seed')
 
 require('dotenv').config()
 const MONGO_URI = process.env.MONGO_URI
