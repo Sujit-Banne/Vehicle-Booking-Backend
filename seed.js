@@ -1,21 +1,26 @@
-const { Vehicle } = require('./models/vehicle');
+const Vehicle = require('./models/Vehicle');
 
-const vehicleData = [
-    { name: 'Hatchback', type: 'car', wheels: 4 },
-    { name: 'Sedan', type: 'car', wheels: 4 },
-    { name: 'SUV', type: 'car', wheels: 4 },
-    { name: 'Cruiser', type: 'bike', wheels: 2 },
-    { name: 'Sports', type: 'bike', wheels: 2 },
+const vehiclesData = [
+    {
+        firstName: "sujit",
+        lastName: "banne",
+        type: "motorcycle",
+        model: "Honda",
+        wheels: 2,
+        isBooked: false,
+        startDate: new Date("2023-05-11"),
+        endDate: new Date("2023-05-18")
+    }
 ];
 
+// insert the seed data into the database
+
 async function seedDatabase() {
-    await Vehicle.deleteMany({});
-    await Vehicle.insertMany(vehicleData);
+    await Vehicle.insertMany(vehiclesData);
 }
 
 seedDatabase().then(() => {
     console.log('Database seeded successfully');
-    process.exit();
 }).catch((err) => {
     console.error(err);
-});
+})

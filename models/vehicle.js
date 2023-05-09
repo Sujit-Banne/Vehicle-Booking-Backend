@@ -1,45 +1,40 @@
 const mongoose = require('mongoose');
 
-//vehicle schema
 const vehicleSchema = new mongoose.Schema({
-    name: {
+    firstName: {
         type: String,
-        required: true,
+        required: true
+    },
+    lastName: {
+        type: String,
+        required: true
     },
     type: {
         type: String,
-        enum: ['car', 'bike'],
-        required: true,
+        required: true
+    },
+    model: {
+        type: String,
+        required: true
     },
     wheels: {
         type: Number,
-        required: true,
-        enum: [2, 4],
+        required: true
     },
-});
-
-//booking schema
-const bookingSchema = new mongoose.Schema({
-    vehicle: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Vehicle', //refer from vehicle schema
-        required: true,
-    },
-    userName: {
-        type: String,
-        required: true,
+    isBooked: {
+        type: Boolean,
+        default: false
     },
     startDate: {
         type: Date,
-        required: true,
+        required: true
     },
     endDate: {
         type: Date,
-        required: true,
-    },
+        required: true
+    }
 });
 
-const Vehicle = mongoose.model('Vehicle', vehicleSchema);
-const Booking = mongoose.model('Booking', bookingSchema);
 
-module.exports = { Vehicle, Booking };
+module.exports = mongoose.model('Vehicle', vehicleSchema);
+
