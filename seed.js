@@ -39,6 +39,15 @@ const initialVehicles = [
         endDate: new Date('2023-05-18'),
     },
     {
+        firstName: 'banne',
+        lastName: 'sujit',
+        type: 'sports',
+        model: 'R15',
+        wheels: 2,
+        startDate: new Date('2023-05-14'),
+        endDate: new Date('2023-05-18'),
+    },
+    {
         firstName: "sujit",
         lastName: "banne",
         type: "hatchback",
@@ -50,6 +59,7 @@ const initialVehicles = [
 ];
 const seedDatabase = async () => {
     try {
+        // await VehicleSchema.deleteMany(); //if new seed data is added un-comment it
         const existingDocuments = await VehicleSchema.countDocuments();
         if (existingDocuments === 0) {
             await VehicleSchema.insertMany(initialVehicles);
