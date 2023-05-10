@@ -4,7 +4,10 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const seed = require('./seed')
+const vehicleRouter = require('./routes/booking')
 
+
+//dot env file 
 require('dotenv').config()
 const MONGO_URI = process.env.MONGO_URI
 const PORT = process.env.PORT
@@ -12,6 +15,10 @@ const PORT = process.env.PORT
 app.use(express.json())
 app.use(morgan('dev'))
 app.use(cors())
+
+//routes
+app.use("", vehicleRouter)
+
 
 //connection to db
 mongoose.connect(MONGO_URI)

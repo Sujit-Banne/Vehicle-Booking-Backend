@@ -3,38 +3,34 @@ const mongoose = require('mongoose');
 const vehicleSchema = new mongoose.Schema({
     firstName: {
         type: String,
-        required: true
+        required: true,
+        unique: true,
     },
     lastName: {
         type: String,
-        required: true
+        required: true,
     },
     type: {
         type: String,
-        required: true
+        required: true,
     },
     model: {
         type: String,
-        required: true
+        required: false,
     },
     wheels: {
         type: Number,
-        required: true
-    },
-    isBooked: {
-        type: Boolean,
-        default: false
+        required: true,
     },
     startDate: {
         type: Date,
-        required: true
+        required: true,
     },
     endDate: {
         type: Date,
-        required: true
-    }
+        required: true,
+    },
 });
 
 
 module.exports = mongoose.model('Vehicle', vehicleSchema);
-
