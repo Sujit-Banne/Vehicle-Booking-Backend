@@ -18,12 +18,12 @@ router.get('/api/vehicles', async (req, res) => {
 // Book a vehicle
 router.post('/api/book', async (req, res) => {
     try {
-        const { firstName, lastName, vehicleType, vehicleModel, wheels, startDate, endDate } = req.body;
+        const { firstName, lastName, type, model, wheels, startDate, endDate } = req.body;
 
         // Check if the selected vehicle is available during the date range
         const vehicle = await VehicleSchema.findOne({
-            vehicleType,
-            vehicleModel,
+            type,
+            model,
             wheels,
             $or: [
                 {
@@ -47,8 +47,8 @@ router.post('/api/book', async (req, res) => {
         const booking = new VehicleSchema({
             firstName,
             lastName,
-            type: vehicleType, // Include the 'type' field
-            model: vehicleModel,
+            type, // Include the 'type' field
+            model,
             wheels,
             startDate: startDate,
             endDate: endDate
